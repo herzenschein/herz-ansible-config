@@ -3,12 +3,12 @@
   hosts: opensuse
   tasks:
     - name: Open Source UFPR
-    community.general.zypper_repository:
-      name: ufpr-oss
-      description: Main repository.
-      repo: 'http://opensuse.c3sl.ufpr.br/tumbleweed/repo/oss/'
-      state: present
-      auto_import_keys: yes
+      community.general.zypper_repository:
+        name: ufpr-oss
+        description: Main repository.
+        repo: 'http://opensuse.c3sl.ufpr.br/tumbleweed/repo/oss/'
+        state: present
+        auto_import_keys: yes
     - name: Absolutely Proprietary UFPR
       community.general.zypper_repository:
         name: ufpr-noss
