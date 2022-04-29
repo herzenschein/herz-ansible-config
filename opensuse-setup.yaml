@@ -1,0 +1,65 @@
+---
+- name: Setup repositories for my personal use.
+  hosts: opensuse
+  tasks:
+    - name: Open Source UFPR
+    community.general.zypper_repository:
+      name: ufpr-oss
+      description: Main repository.
+      repo: 'http://opensuse.c3sl.ufpr.br/tumbleweed/repo/oss/'
+      state: present
+      auto_import_keys: yes
+    - name: Absolutely Proprietary UFPR
+      community.general.zypper_repository:
+        name: ufpr-noss
+        description: Contains proprietary software. This includes Discord, Steam and Wine-mono.
+        repo: 'http://opensuse.c3sl.ufpr.br/tumbleweed/repo/non-oss/'
+        state: present
+        auto_import_keys: yes
+    - name: Source UFPR
+      community.general.zypper_repository:
+        name: ufpr-src
+        description: Sources repository. Useful for source-install --build-deps-only.
+        repo: 'http://opensuse.c3sl.ufpr.br/source/tumbleweed/repo/oss/'
+        state: present
+        auto_import_keys: yes
+    - name: Packman Codecs
+      community.general.zypper_repository:
+        name: packman
+        description: Contains multimedia codecs.
+        repo: 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/'
+        state: present
+        auto_import_keys: yes
+        priority: 70
+    - name: KDE Unstable Qt5 - Krypton
+      community.general.zypper_repository:
+        name: kdeu-qt5
+        description: Qt5 built from git.
+        repo: 'https://download.opensuse.org/repositories/KDE:/Unstable:/Qt/openSUSE_Tumbleweed/ KDE:Unstable:Qt'
+        state: present
+        auto_import_keys: yes
+        priority: 80
+    - name: KDE Unstable KF5 - Krypton
+      community.general.zypper_repository:
+        name: kdeu-kf5
+        description: KDE Frameworks built from git.
+        repo: 'https://download.opensuse.org/repositories/KDE:/Unstable:/Frameworks/openSUSE_Factory/ KDE:Unstable:Frameworks'
+        state: present
+        auto_import_keys: yes
+        priority: 80
+    - name: KDE Unstable Apps - Krypton
+      community.general.zypper_repository:
+        name: kdeu-apps
+        description: KDE Applications built from git.
+        repo: 'https://download.opensuse.org/repositories/KDE:/Unstable:/Applications/KDE_Unstable_Frameworks_openSUSE_Factory/ KDE:Unstable:Applications'
+        state: present
+        auto_import_keys: yes
+        priority: 80
+    - name: KDE Unstable Extra - Krypton
+      community.general.zypper_repository:
+        name: kdeu-extra
+        description: Extra KDE components built from bit.
+        repo: 'https://download.opensuse.org/repositories/KDE:/Unstable:/Extra/KDE_Unstable_Frameworks_openSUSE_Factory/ KDE:Unstable:Extra'
+        state: present
+        auto_import_keys: yes
+        priority: 80
